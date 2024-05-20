@@ -9,6 +9,10 @@ response = requests.get(endpoint)
 exames = {
     "Exames": [],
     "Descrição": [],
+    "NãoPraticar": [],
+    "InfosLudicas": [],
+    "Preparos": [],
+
 }
 
 if(response.status_code == 200):
@@ -17,16 +21,40 @@ if(response.status_code == 200):
     for key in data.keys():
         if not(type(data[key]) != dict):
             for examKey in data[key].keys():
+                arrayInfos = []
                 if(examKey == "cantDo"):
-                    for info in range(len(data[key])):
-                        
+                    for cantDo in range(len(data[key][examKey])):
+                        arrayInfos.append(data[key][examKey][cantDo])
+                    exames["NãoPraticar"].append(arrayInfos)
+                if(examKey == "ludicInfos"):
+                    for ludicInfos in range(len(data[key][examKey])):
+                         arrayInfos.append(data[key][examKey][ludicInfos])
+                    exames["InfosLudicas"].append(arrayInfos)
+                if(examKey == "preparations"):
+                    for preparations in range(len(data[key][examKey])):
+                         arrayInfos.append(data[key][examKey][preparations])
+                    exames["Preparos"].append(arrayInfos)
+        exames['Exames'].append(data[key]["title"])
+        exames["Descrição"].append(data[key]["about"])
+    print("==================================")
 
-                exames['Exames'].append(data[key]["title"])
-                exames["Descrição"].append(data[key]["about"])
-            
+    print(exames["Exames"][0])
+    print("==================================")
+
+    print(exames["Descrição"][0])
+    print("==================================")
+
+    print(exames["NãoPraticar"][0])
+    print("==================================")
+
+    print(exames["InfosLudicas"][0])
+    print("==================================")
+    
+    print(exames["Preparos"][0])
+
+
             
 
-    print(exames)
 else:
     print("Error ao fazer solicitação")
 
