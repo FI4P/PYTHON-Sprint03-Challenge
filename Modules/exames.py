@@ -1,4 +1,6 @@
 from Modules.messages import Messages
+import requests
+
 messages = Messages()
 
 class Exames:
