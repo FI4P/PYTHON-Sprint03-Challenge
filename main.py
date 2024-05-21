@@ -15,7 +15,7 @@ def main():
     applicationMessages.applicationDivisor()
     applicationMessages.byeMessage()
     
-
+     
 main()
     
     

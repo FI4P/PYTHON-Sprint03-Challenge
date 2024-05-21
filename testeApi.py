@@ -17,7 +17,6 @@ exames = {
 
 if(response.status_code == 200):
     data = response.json()
-
     for key in data.keys():
         if not(type(data[key]) != dict):
             for examKey in data[key].keys():
@@ -36,28 +35,9 @@ if(response.status_code == 200):
                     exames["Preparos"].append(arrayInfos)
         exames['Exames'].append(data[key]["title"])
         exames["Descrição"].append(data[key]["about"])
-    print("==================================")
-
-    print(exames["Exames"][0])
-    print("==================================")
-
-    print(exames["Descrição"][0])
-    print("==================================")
-
-    print(exames["NãoPraticar"][0])
-    print("==================================")
-
-    print(exames["InfosLudicas"][0])
-    print("==================================")
-    
-    print(exames["Preparos"][0])
-
-
-            
-
+    print(exames["Exames"])
 else:
-    print("Error ao fazer solicitação")
-
+    print("Erro ao fazer solicitação!")
 
 # try:
 #     response = requests.get(endpoint)
