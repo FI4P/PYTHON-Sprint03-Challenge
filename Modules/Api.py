@@ -4,7 +4,7 @@ import requests
 class FireBaseApi:
     @staticmethod
     def fetchApi():
-        endpoint = 'https://infocr-fiap-default-rtdb.firebaseio.com/exams.json'
+        endpoint = 'https://infocr-fiap-1espr-default-rtdb.firebaseio.com/exams.json'
         try:
             response = requests.get(endpoint)
             exames = {
